@@ -1,5 +1,295 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+@import "variable";
+@import "mixin";
+@import "base";
+@import "function";
+
+
+.container-headliner {
+    @include containerSize(100, 100, false);
+    background-color: $secondColor;
+    padding: 0 $gap-row;
+    padding-bottom: calc($gap-column*3);
+    > img {
+        @include containerSize(1px, 200px, true);
+        @include containerDisplay(Block);
+        margin: 0 auto;
+        margin-bottom: calc($gap-column*2);
+    }
+    article {
+        text-align: center;
+        @include containerSize(50%, $hasHeight: false);
+        margin: 0 auto;
+        margin-bottom: calc($gap-column*3);
+        h1 {
+            color: $mainColor;
+            margin: calc($gap-column/3) 0;
+            span {
+                color: $secondColor;
+                -webkit-text-stroke-color: $mainColor;
+                -webkit-text-stroke-width: 1px;
+                font-size: nth($fontsSizes, -1);
+                display: inline-block;
+            }
+        }
+        p {
+            color: $mainColor;
+        }
+    }
+    div {
+        @include containerDisplay(flex, $jc: space-between);
+        img {
+            @include containerSize(6vw, 6vh, true);
+        }
+    }
+}
+.btn {
+    @include containerSize(117px, 55px, true);
+    line-height: 2.3rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 1.6rem 3.2rem;
+    border: 1px solid $mainColor;
+    color: $mainColor;
+    text-decoration: none;
+    transition: background-color .5s, color .5s, border-color .5s;
+
+    &:hover {
+        border-color: $mainColor;
+        background-color: $mainColor;
+        color: $secondColor;
+    }
+}
+
+.container-facts {
+    @include containerSize(100, 100);
+    color: $mainColor;
+    background-color: $secondColor;
+    padding: 0 $gap-row;
+    @include backgroundImage('../img/map.svg', right 10% bottom 25%, no-repeat, 509px 617px);
+    padding-bottom: calc($gap-column*4);
+
+    article {
+        @include containerSize(70%, $hasHeight: false);
+        h2 {
+            line-height: 11.3rem;
+            margin-bottom: calc($gap-column*3);
+        }
+        h3 {
+            margin-bottom: calc($gap-column);
+        }
+    }
+}
+
+.container-img-hell {
+    @include containerDisplay(flex, center, center, column, nowrap);
+    padding-top: calc($gap-column*2);
+    img {
+        @include containerSize(300px, 200px, true);
+
+    }
+    > img {
+        &:nth-of-type(1) {
+            margin-top: -20vh;
+            margin-left: auto;
+            margin-right: 160px;
+        }
+    }
+    article {
+        @include containerDisplay(grid, $column: 3, $columnSize: 1fr);
+        margin-bottom: calc($gap-column*3);
+        &:nth-of-type(1) {
+            @include containerSize(100, 70);
+            div {
+                @include containerDisplay(flex, center, center, column);
+                h2 {
+                    margin-bottom: $gap-column;
+                }
+            }
+            img {
+                @include containerSize(240px, 160px, true);
+                &:nth-of-type(1) {
+                    margin-left: 4rem;
+                }
+                &:nth-of-type(2) {
+                    align-self: end;
+                    justify-self: end;
+                }
+            }
+        }
+        &:nth-of-type(2) {
+            img {
+                @include containerSize(240px, 160px, true);
+                margin-top: -$gap-column;
+            }
+        }
+    }
+    > div {
+        @include containerSize(100%, 300px);
+        @include containerDisplay(flex, $jc: space-around);
+        margin-bottom: calc($gap-column*3);
+        img {
+            &:nth-of-type(1) {
+                margin-left: $gap-row;
+            }
+            &:nth-of-type(2) {
+                margin-left: $gap-row;
+                align-self: end;
+            }
+        }
+    }
+}
+
+.container-goldenbear {
+    background-color: $secondColor;
+    color: $mainColor;
+    padding: 0 $gap-row;
+    article {
+        @include containerDisplay(flex, $jc: flex-start);
+        padding-top: calc($gap-column*7);
+        gap: calc($gap-row*2);
+        div {
+            @include containerSize(37%, $hasHeight: false);
+            p {
+                margin-bottom: $gap-column;
+            }
+        }
+    }
+    .img-wrapper {
+        @include position(relative, $zIndex: 10);
+        @include containerDisplay(flex, end, center);
+        margin-bottom: calc($gap-column*(-2));
+        img {
+            @include containerSize(703px, 703px, true);
+            &:nth-of-type(2) {
+                @include containerSize(358px, 463px, true);
+                margin-left: -$gap-row;
+                margin-bottom: $gap-column;
+            }
+        }
+    }
+}
+
+.container-rosebear {
+    @extend .container-goldenbear;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    color: $secondColor;
+    background-color: $mainColor;
+    .img-wrapper {
+        flex-direction: row-reverse;
+        margin-bottom: calc($gap-column*3);
+        img {
+            &:nth-of-type(2) {
+                z-index: 10;
+                margin-left: 0;
+                margin-right: -$gap-row;
+            }
+        }
+    }
+    .circle-banner {
+        @include containerSize(45%, 45%);
+        @include position(absolute, -20%, $right: -12%, $zIndex: 1);
+        font-size: nth($fontsSizes, 5);
+        letter-spacing: 1.2rem;
+        font-family: 'workSans';
+        animation: spinMe 2.5s infinite linear;
+    }
+}
+
+@keyframes spinMe { 
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+.container-banner{
+    background-color: $secondColor;
+    color: $mainColor;
+    padding: $gap-row;
+    article {
+        position: relative;
+        div {   
+            background-color: $mainColor;
+        
+            &:nth-of-type(1) {
+                transform: rotate(40deg); 
+                @include position(absolute, 0, $right: 0, $zIndex: 0);
+                @include containerDisplay(flex);
+                
+                margin-right: calc($gap-row*(-4));
+                h2 {
+                    color: $secondColor;
+                    padding: calc($gap-column/2) 0;
+                    text-align: center;
+                    animation: moveMe 4s 0s infinite linear; 
+
+                    &:nth-of-type(2) {
+                        @include position(absolute, 0, 0);
+                        animation: moveMe 4s 2s infinite linear; 
+                        transform: translateX(100%);
+                    }
+                    span {
+                        color: $mainColor;
+                        -webkit-text-stroke-color: $secondColor;
+                        -webkit-text-stroke-width: 1px;
+                        font-size: nth($fontsSizes, -1);
+                        line-height: nth($lineHeights, -1);
+                    }
+                }
+            }
+        
+            &:nth-of-type(2) {
+                @include containerSize(40%, $hasHeight: false);
+                background-color: transparent;
+                p {
+                    margin-bottom: $gap-column;
+                    &:nth-of-type(2) {
+                        font-size: nth($fontsSizes, 2);
+                        line-height: nth($lineHeights, 2);
+                    }
+                } 
+            }
+        }
+    }
+}
+
+@keyframes moveMe {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.footer {
+    background-color: $secondColor;
+    color: $mainColor;
+    padding: 0 $gap-row;
+    @include containerDisplay(flex, $jc: space-between);
+    article {
+        div {
+            @include containerDisplay(flex);
+            gap: 1vw;
+            img {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+    
+    > div {
+        img {
+            &:nth-of-type(1) {
+                @include containerSize(8.5rem, 4.5rem, true);
+            }
+            &:nth-of-type(2) {
+                @include containerSize(10.4rem, 3.2rem, true);
+            }
+        }
+    }
+}
+
+footer {
+    overflow: hidden;
 }

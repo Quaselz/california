@@ -1,0 +1,28 @@
+@for $i from 1 through length($fontsSizes) {
+    $fontSize: nth($fontsSizes, -$i);
+    $lineHeight: nth($lineHeights, -$i);
+        @if -$i == -5 {
+            p {
+                font-size: $fontSize;
+                line-height: $lineHeight;
+                font-weight: 600;
+                font-family: 'workSans', Arial, Helvetica, sans-serif;
+            }
+        }
+        @else if -$i == -4 {
+            span {
+                font-size: $fontSize;
+                line-height: $lineHeight;
+                font-family: 'Lora', Arial, Helvetica, sans-serif;
+                font-weight: 600;
+            }
+        }
+        @else { 
+            h#{$i} {
+            font-size: $fontSize;
+            line-height: $lineHeight;
+            font-family: 'Lora', Arial, Helvetica, sans-serif;
+            font-weight: 600;
+            }
+        }
+}
