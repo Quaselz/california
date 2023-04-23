@@ -363,7 +363,12 @@ footer {
             }
         }
     }
+
+
     .container-facts {
+        @include backgroundImage('../img/map.svg', right 10% bottom 25%, no-repeat, calc(509px/2) calc(617px/2));
+        animation: scaleMyLittleBg 1s infinite alternate;
+
         article {
             h2 {
                 line-height: calc(11.3rem/1.5);

@@ -156,6 +156,14 @@ p {
     background-size: 514.09px 623.17px;
   }
 }
+@keyframes scaleMyLittleBg {
+  80% {
+    background-size: 259.59px 314.67px;
+  }
+  100% {
+    background-size: 257.045px 311.585px;
+  }
+}
 .container-headliner {
   /* convert numbers to string */
   min-height: 100vh;
@@ -537,6 +545,13 @@ footer {
   }
   p {
     line-height: 2.1333333333rem;
+  }
+  .container-facts {
+    background-image: url("../img/map.svg");
+    background-position: right 10% bottom 25%;
+    background-repeat: no-repeat;
+    background-size: 254.5px 308.5px;
+    animation: scaleMyLittleBg 1s infinite alternate;
   }
   .container-facts article h2 {
     line-height: 7.5333333333rem;

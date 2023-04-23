@@ -59,3 +59,10 @@
     80% {    background-size: calc(509px*1.02) calc(617px*1.02);}
     100% {    background-size: calc(509px*1.01) calc(617px*1.01);}
 }
+
+@keyframes scaleMyLittleBg {
+    0% {}
+    80% {    background-size: calc((509px/2)*1.02) calc((617px/2)*1.02);}
+    100% {    background-size: calc((509px/2)*1.01) calc((617px/2)*1.01);}
+}
+
