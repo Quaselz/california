@@ -229,6 +229,7 @@ p {
   line-height: 2.3rem;
   font-size: clamp(0.6666666667rem, 2vw + 1rem, 2rem);
   text-transform: uppercase;
+  font-family: "workSans", Arial, Helvetica, sans-serif;
   padding: 1.6rem 3.2rem;
   border: 1px solid #fff;
   color: #fff;
@@ -617,6 +618,13 @@ footer {
     justify-content: center;
     flex-direction: column;
   }
+  .container-facts article {
+    width: 100%;
+  }
+  .container-facts article h2 {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
   .container-goldenbear article, .container-rosebear article {
     padding-top: 0;
   }
@@ -661,5 +669,8 @@ footer {
   }
   .container-img-hell article:nth-of-type(2) {
     grid-template-columns: 1fr;
+  }
+  .container-banner article div:nth-of-type(2) {
+    padding: 5vh 5vw;
   }
 }/*# sourceMappingURL=main.css.map */

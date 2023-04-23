@@ -61,6 +61,7 @@
     line-height: 2.3rem;
     font-size:clamp(calc(2rem/3), 2vw + calc(2rem/2), 2rem);
     text-transform: uppercase;
+    font-family: 'workSans', Arial, Helvetica, sans-serif;
     padding: 1.6rem 3.2rem;
     border: 1px solid $mainColor;
     color: $mainColor;
@@ -262,7 +263,6 @@
                 p {
                     margin-bottom: $gap-column;
                     &:nth-of-type(2) {
-
                         font-size:clamp(calc(nth($fontsSizes, 2)/3), 2vw + calc( nth($fontsSizes, 2)/2), nth($fontsSizes, 2));
                         line-height: nth($lineHeights, 2);
                     }
@@ -441,6 +441,16 @@ footer {
             @include containerDisplay(flex, center, center, column);
         }
     }
+    .container-facts {
+        article {
+            width: 100%;
+            h2 {
+                font-size: 4rem;
+                line-height: 4rem;
+            }
+        }
+    
+    }
     .container-goldenbear {
         article {
             padding-top: 0;
@@ -485,6 +495,15 @@ footer {
             }
             &:nth-of-type(2) {
                 grid-template-columns: 1fr;
+            }
+        }
+    }
+    .container-banner {
+        article {
+            div {
+                &:nth-of-type(2) {
+                    padding: $gap-column $gap-row;
+                }
             }
         }
     }
