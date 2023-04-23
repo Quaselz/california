@@ -3,17 +3,23 @@
 @import "base";
 @import "function";
 
-
 .container-headliner {
-    @include containerSize(100, 100, false);
+    @include containerSize(100, 100);
     background-color: $secondColor;
     padding: 0 $gap-row;
     padding-bottom: calc($gap-column*3);
-    > img {
-        @include containerSize(1px, 200px, true);
+    > svg {
+        width: 100%;
+        height: 200px;
         @include containerDisplay(Block);
         margin: 0 auto;
         margin-bottom: calc($gap-column*2);
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        pointer-events: none;
+        .tangleMe {
+            animation: wimpMe 5s infinite linear alternate;
+        }
     }
     article {
         text-align: center;
@@ -27,7 +33,7 @@
                 color: $secondColor;
                 -webkit-text-stroke-color: $mainColor;
                 -webkit-text-stroke-width: 1px;
-                font-size: nth($fontsSizes, -1);
+                font-size:clamp(calc(nth($fontsSizes, -1)/3), 2vw + calc( nth($fontsSizes, -1)/2), nth($fontsSizes, -1));
                 display: inline-block;
             }
         }
@@ -42,10 +48,20 @@
         }
     }
 }
+
+@keyframes wimpMe { 
+    0% { d: path("M 100 0 C 91 2 100 16 100 16 C 100 16 100 35 100 35 C 100 35 100 115 100 115");}
+    16% {d: path("M 100 0 C 100 7 86 7 100 16 C 100 16 100 35 100 35 C 100 35 100 115 100 115");}
+    32% {d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 100 35 100 35 C 100 35 100 115 100 115");}
+    48% {d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 91 26 100 35 C 100 35 100 115 100 115");}
+    64% {d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 91 26 100 35 C 114 65 100 115 100 115");}
+    80% {d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 91 26 100 35 C 114 65 100 115 100 115");}
+    100% {d: path("M 100 0 C 100 0 100 16 100 16 C 100 16 100 35 100 35 C 100 35 100 115 100 115");}
+}
 .btn {
     @include containerSize(117px, 55px, true);
     line-height: 2.3rem;
-    font-size: 2rem;
+    font-size:clamp(calc(2rem/3), 2vw + calc(2rem/2), 2rem);
     text-transform: uppercase;
     padding: 1.6rem 3.2rem;
     border: 1px solid $mainColor;
@@ -85,13 +101,16 @@
     padding-top: calc($gap-column*2);
     img {
         @include containerSize(300px, 200px, true);
-
     }
     > img {
         &:nth-of-type(1) {
             margin-top: -20vh;
             margin-left: auto;
             margin-right: 160px;
+        }
+        &:last-of-type {
+            margin-left: 25%;
+            margin-bottom: -5%;
         }
     }
     article {
@@ -190,7 +209,8 @@
     .circle-banner {
         @include containerSize(45%, 45%);
         @include position(absolute, -20%, $right: -12%, $zIndex: 1);
-        font-size: nth($fontsSizes, 5);
+        font-size:clamp(calc(nth($fontsSizes, 5)/3), 2vw + calc( nth($fontsSizes, 5)/2), nth($fontsSizes, 5));
+    
         letter-spacing: 1.2rem;
         font-family: 'workSans';
         animation: spinMe 2.5s infinite linear;
@@ -212,10 +232,10 @@
             background-color: $mainColor;
         
             &:nth-of-type(1) {
-                transform: rotate(40deg); 
-                @include position(absolute, 0, $right: 0, $zIndex: 0);
+                @include position(absolute, 0, $right: -5%, $zIndex: 0);
                 @include containerDisplay(flex);
-                
+                transform: rotate(40deg); 
+                width: 1200px;
                 margin-right: calc($gap-row*(-4));
                 h2 {
                     color: $secondColor;
@@ -232,7 +252,7 @@
                         color: $mainColor;
                         -webkit-text-stroke-color: $secondColor;
                         -webkit-text-stroke-width: 1px;
-                        font-size: nth($fontsSizes, -1);
+                        font-size:clamp(calc(nth($fontsSizes, -1)/3), 2vw + calc( nth($fontsSizes, -1)/2), nth($fontsSizes, -1));
                         line-height: nth($lineHeights, -1);
                     }
                 }
@@ -244,7 +264,8 @@
                 p {
                     margin-bottom: $gap-column;
                     &:nth-of-type(2) {
-                        font-size: nth($fontsSizes, 2);
+
+                        font-size:clamp(calc(nth($fontsSizes, 2)/3), 2vw + calc( nth($fontsSizes, 2)/2), nth($fontsSizes, 2));
                         line-height: nth($lineHeights, 2);
                     }
                 } 
@@ -292,4 +313,149 @@
 
 footer {
     overflow: hidden;
+}
+
+@media only screen and (min-width:1400px) {
+    .container-rosebear {
+        .circle-banner {
+            @include containerSize(40%, 40%);
+        }
+    }
+}
+
+@media only screen and (max-width:1200px) {
+    .container-goldenbear {
+        .img-wrapper {
+            img {
+                @include containerSize(calc(703px/1.5), calc(703px/1.5), true);
+                &:nth-of-type(2) {
+                    @include containerSize(calc(358px/1.5), calc(463px/1.5), true);
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:900px) {
+    .container-banner {
+        article {
+            div {
+                &:nth-of-type(1) {
+                    @include position(absolute, 0, $right: -10%, $zIndex: 0);
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    /* loop for responive lineheiths*/
+
+    @for $i from 1 through length($lineHeights) {
+        $lineHeight: nth($lineHeights, -$i);
+        $lineHeight: calc($lineHeight/1.5);
+        @if -$i == -5 {
+            p {
+                line-height: $lineHeight;
+            }
+        }
+        @else if -$i == -4 {
+            span {
+                line-height: $lineHeight;
+            }
+        }
+        @else { 
+            h#{$i} {
+            line-height: $lineHeight;
+            }
+        }
+    }
+    .container-facts {
+        article {
+            h2 {
+                line-height: calc(11.3rem/1.5);
+            }
+        }
+    }
+
+    .container-headliner {
+        article {
+            @include containerSize(100%, $hasHeight: false);
+        }
+    }
+    .container-goldenbear {
+        .img-wrapper {
+            img {
+                @include containerSize(calc(703px/2.3), calc(703px/2.3), true);
+                &:nth-of-type(2) {
+                    @include containerSize(calc(358px/2.3), calc(463px/2.3), true);
+                }
+            }
+        }
+        article {
+            flex-direction: column;
+            div {
+                @include containerSize(100%, $hasHeight: false);
+            }
+        }
+    }
+    .container-img-hell {
+        img {
+            @include containerSize(calc(300px/1.5), calc(200px/1.5), true);
+        }
+        article {
+            grid-template-columns: 1fr;
+            &:nth-of-type(2) {
+                @include containerDisplay(grid, $column: 2, $columnSize: 1fr);
+            }
+        }
+    }
+    .container-banner {
+        padding: 5vw 0;
+        article {
+            div {
+                &:nth-of-type(1) {
+                    @include position(static);
+                    transform: rotate(0deg); 
+                    min-width: 1%;
+                    margin: 0;
+                }
+                &:nth-of-type(2) {
+                    @include containerSize(100%, $hasHeight: false);
+                    padding: 0 5vw;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .container-headliner {
+        article {
+            h1 {
+                font-size: 3.4rem;
+                span {
+                    font-size: 3.4rem;
+                }
+            }
+        }
+    }
+    .container-goldenbear {
+        .img-wrapper {
+            img {
+                @include containerSize(calc(703px/3.3), calc(703px/3.3), true);
+                &:nth-of-type(2) {
+                    @include containerSize(calc(358px/3.3), calc(463px/3.3), true);
+                }
+            }
+        }
+    }
+    .container-img-hell {
+        > div {
+            flex-direction: column;
+            align-items: center;
+        
+        }
+    }
 }

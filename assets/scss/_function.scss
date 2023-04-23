@@ -3,7 +3,7 @@
     $lineHeight: nth($lineHeights, -$i);
         @if -$i == -5 {
             p {
-                font-size: $fontSize;
+                font-size: clamp(calc($fontSize/3), 2vw + calc($fontSize/2),$fontSize);
                 line-height: $lineHeight;
                 font-weight: 600;
                 font-family: 'workSans', Arial, Helvetica, sans-serif;
@@ -11,7 +11,7 @@
         }
         @else if -$i == -4 {
             span {
-                font-size: $fontSize;
+                font-size: clamp(calc($fontSize/3), 2vw + calc($fontSize/2),$fontSize);
                 line-height: $lineHeight;
                 font-family: 'Lora', Arial, Helvetica, sans-serif;
                 font-weight: 600;
@@ -19,7 +19,7 @@
         }
         @else { 
             h#{$i} {
-            font-size: $fontSize;
+            font-size: clamp(calc($fontSize/3), 2vw + calc($fontSize/2),$fontSize);
             line-height: $lineHeight;
             font-family: 'Lora', Arial, Helvetica, sans-serif;
             font-weight: 600;

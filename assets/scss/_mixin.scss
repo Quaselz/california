@@ -4,7 +4,7 @@
 
     @if $hasHeight == true {
         $height: #{$height};
-        @if str-index($height, "vh") or str-index($height, '%') or str-index($height, 'px') or tr-index($height, 'rem'){
+        @if str-index($height, "vh") or str-index($height, '%') or str-index($height, 'px') or str-index($height, 'rem'){
             @if $fixedSizes == false {
                 min-height: $height;
                 width: $width;
@@ -83,7 +83,7 @@
 }
 
 @mixin fonts($size, $lineHeight: "", $fontFamily: "", $weight: "") {
-    font-size: $fontSize;
+    font-size: clamp(calc($fontsSize/3), 2vw + calc($fontsSize/2),$fontSize);
     @if $fontFamily != "" {
         font-family: $fontFamily , Arial, Helvetica, sans-serif;
     }
