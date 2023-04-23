@@ -15,6 +15,10 @@
 
 img {
   max-width: 100%;
+  transition: box-shadow 0.2s;
+}
+img:hover {
+  box-shadow: 0px 0px 10px #000000;
 }
 
 html {
@@ -56,6 +60,102 @@ p {
   font-family: "workSans", Arial, Helvetica, sans-serif;
 }
 
+/* change paths of line */
+@keyframes wimpMe {
+  0% {
+    d: path("M 100 0 C 101 3 95 2 95 5 C 101 3 95 2 95 5 C 101 3 95 2 95 5 C 101 3 95 2 95 5 C 101 3 95 2 95 5 C 101 3 95 2 95 5");
+  }
+  12% {
+    d: path("M 100 0 C 101 3 95 2 95 5 C 96 8 96 8 100 10 C 96 8 96 8 100 10 C 96 8 96 8 100 10 C 96 8 96 8 100 10 C 96 8 96 8 100 10");
+  }
+  25% {
+    d: path("M 100 0 C 105 4 95 2 100 8 C 105 14 100 13 101 16 C 105 14 100 13 101 16 C 105 14 100 13 101 16 C 105 14 100 13 101 16 C 105 14 100 13 101 16");
+  }
+  37% {
+    d: path("M 100 0 C 96 4 105 5 100 8 C 96 13 98 13 101 16 C 104 21 100 22 100 25 C 104 21 100 22 100 25 C 104 21 100 22 100 25 C 104 21 100 22 100 25");
+  }
+  50% {
+    d: path("M 100 0 C 99 4 102 5 100 8 C 103 13 98 13 101 16 C 98 22 100 22 100 25 C 100 30 100 35 100 40 C 100 30 100 35 100 40 C 100 30 100 35 100 40");
+  }
+  62% {
+    d: path("M 100 0 C 102 4 99 5 100 8 C 99 12 101 13 100 16 C 102 22 100 22 100 25 C 99 30 101 35 100 40 C 99 30 101 35 100 40 C 99 30 101 35 100 40");
+  }
+  75% {
+    d: path("M 100 0 C 100 0 100 8 100 8 C 100 8 100 16 100 16 C 100 16 100 25 100 25 C 100 25 100 40 100 40 C 100 25 100 40 100 40 C 100 25 100 40 100 40");
+  }
+  87% {
+    d: path("M 100 0 C 100 0 100 8 100 8 C 100 8 100 16 100 16 C 100 16 100 25 100 25 C 100 25 100 40 100 40 C 97 58 103 65 100 75 C 97 58 103 65 100 75");
+  }
+  100% {
+    d: path("M 100 0 C 100 0 100 8 100 8 C 100 8 100 16 100 16 C 100 16 100 25 100 25 C 100 25 100 40 100 40 C 100 40 100 75 100 75 C 100 88.3333 100 101.6667 100 115");
+  }
+}
+/* headline drop */
+@keyframes fallDown {
+  0% {
+    transform: translate(0, -125%) rotate(-8deg);
+  }
+  20% {
+    transform: translate(0, -111%) rotate(3deg);
+  }
+  40% {
+    transform: translate(0, -90%) rotate(0deg);
+  }
+  79% {
+    transform: translate(0, -70%) rotate(55deg);
+  }
+  80% {
+    transform: translate(0, -40%) rotate(55deg);
+  }
+  90% {
+    transform: rotate(-25deg);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+/* circle banner rotate*/
+@keyframes spinMe {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* footer banner */
+@keyframes moveMe {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+/* btn animation */
+@keyframes shakeMe {
+  0% {
+    transform: rotate(10deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+/* Map scaling */
+@keyframes scaleMyBg {
+  80% {
+    background-size: 519.18px 629.34px;
+  }
+  100% {
+    background-size: 514.09px 623.17px;
+  }
+}
 .container-headliner {
   /* convert numbers to string */
   min-height: 100vh;
@@ -76,7 +176,11 @@ p {
   pointer-events: none;
 }
 .container-headliner > svg .tangleMe {
-  animation: wimpMe 5s infinite linear alternate;
+  d: path("M 100 0 C 100 0 100 8 100 8 C 100 8 100 16 100 16 C 100 16 100 25 100 25 C 100 25 100 40 100 40 C 100 40 100 75 100 75 C 100 88.3333 100 101.6667 100 115");
+  stroke-width: 0.1;
+  stroke: white;
+  stroke-dasharray: 0;
+  animation: wimpMe 1.5s 1 linear;
 }
 .container-headliner article {
   text-align: center;
@@ -84,6 +188,7 @@ p {
   width: 50%;
   margin: 0 auto;
   margin-bottom: 15vh;
+  animation: fallDown 1.5s 1 linear;
 }
 .container-headliner article h1 {
   color: #fff;
@@ -109,29 +214,6 @@ p {
   width: 6vw;
 }
 
-@keyframes wimpMe {
-  0% {
-    d: path("M 100 0 C 91 2 100 16 100 16 C 100 16 100 35 100 35 C 100 35 100 115 100 115");
-  }
-  16% {
-    d: path("M 100 0 C 100 7 86 7 100 16 C 100 16 100 35 100 35 C 100 35 100 115 100 115");
-  }
-  32% {
-    d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 100 35 100 35 C 100 35 100 115 100 115");
-  }
-  48% {
-    d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 91 26 100 35 C 100 35 100 115 100 115");
-  }
-  64% {
-    d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 91 26 100 35 C 114 65 100 115 100 115");
-  }
-  80% {
-    d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 91 26 100 35 C 114 65 100 115 100 115");
-  }
-  100% {
-    d: path("M 100 0 C 100 0 100 16 100 16 C 100 16 100 35 100 35 C 100 35 100 115 100 115");
-  }
-}
 .btn {
   /* convert numbers to string */
   height: 55px;
@@ -145,10 +227,11 @@ p {
   text-decoration: none;
   transition: background-color 0.5s, color 0.5s, border-color 0.5s;
 }
-.btn:hover {
+.btn:hover, .btn:active, .btn:focus {
   border-color: #fff;
   background-color: #fff;
   color: #000;
+  animation: shakeMe 0.5s 1;
 }
 
 .container-facts {
@@ -156,14 +239,15 @@ p {
   min-height: 100vh;
   min-height: 100svh;
   width: 100%;
-  color: #fff;
-  background-color: #000;
-  padding: 0 5vw;
   background-image: url("../img/map.svg");
   background-position: right 10% bottom 25%;
   background-repeat: no-repeat;
   background-size: 509px 617px;
+  color: #fff;
+  background-color: #000;
+  padding: 0 5vw;
   padding-bottom: 20vh;
+  animation: scaleMyBg 1s infinite alternate;
 }
 .container-facts article {
   /* convert numbers to string */
@@ -321,15 +405,10 @@ p {
   font-family: "workSans";
   animation: spinMe 2.5s infinite linear;
 }
-
-@keyframes spinMe {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.container-rosebear .circle-banner path {
+  d: path("m 150 300 C 150 150 300 150 300 150 C 450 150 450 300 450 300 C 450 450 300 450 300 450 C 150 450 150 300 150 300");
 }
+
 .container-banner {
   background-color: #000;
   color: #fff;
@@ -384,14 +463,6 @@ p {
   line-height: 3.2rem;
 }
 
-@keyframes moveMe {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
 .footer {
   background-color: #000;
   color: #fff;
@@ -422,6 +493,7 @@ footer {
   overflow: hidden;
 }
 
+/* Media Quarry Start */
 @media only screen and (min-width: 1400px) {
   .container-rosebear .circle-banner {
     /* convert numbers to string */
@@ -524,6 +596,15 @@ footer {
   .container-headliner article h1 span {
     font-size: 3.4rem;
   }
+  .container-headliner div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .container-goldenbear article, .container-rosebear article {
+    padding-top: 0;
+  }
   .container-goldenbear .img-wrapper img, .container-rosebear .img-wrapper img {
     /* convert numbers to string */
     height: 213.0303030303px;
@@ -534,8 +615,36 @@ footer {
     height: 140.303030303px;
     width: 108.4848484848px;
   }
+  .container-rosebear .circle-banner {
+    /* convert numbers to string */
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 5vh;
+    margin-bottom: -5vh;
+    font-family: "workSans";
+    animation: none;
+  }
+  .container-rosebear .circle-banner path {
+    d: path("M 35 316 C 150 150 300 150 300 150 C 404 159 542 278 546 310 C 450 450 300 450 300 450 C 150 450 82 430 35 316");
+  }
+  .container-img-hell p, .container-img-hell h2 {
+    padding: 0 5vw;
+  }
   .container-img-hell > div {
     flex-direction: column;
     align-items: center;
+  }
+  .container-img-hell article img {
+    margin-bottom: 5vh;
+  }
+  .container-img-hell article p {
+    padding-bottom: 5vh;
+  }
+  .container-img-hell article:nth-of-type(2) {
+    grid-template-columns: 1fr;
   }
 }/*# sourceMappingURL=main.css.map */

@@ -2,6 +2,7 @@
 @import "mixin";
 @import "base";
 @import "function";
+@import "keyframes";
 
 .container-headliner {
     @include containerSize(100, 100);
@@ -18,7 +19,12 @@
         stroke-dashoffset: 1000;
         pointer-events: none;
         .tangleMe {
-            animation: wimpMe 5s infinite linear alternate;
+            d: path("M 100 0 C 100 0 100 8 100 8 C 100 8 100 16 100 16 C 100 16 100 25 100 25 C 100 25 100 40 100 40 C 100 40 100 75 100 75 C 100 88.3333 100 101.6667 100 115");
+            stroke-width: 0.1;
+            stroke: white;
+            stroke-dasharray: 0;
+            animation:  wimpMe 1.5s 1 linear;
+                       
         }
     }
     article {
@@ -26,6 +32,7 @@
         @include containerSize(50%, $hasHeight: false);
         margin: 0 auto;
         margin-bottom: calc($gap-column*3);
+        animation: fallDown 1.5s 1 linear;
         h1 {
             color: $mainColor;
             margin: calc($gap-column/3) 0;
@@ -49,15 +56,6 @@
     }
 }
 
-@keyframes wimpMe { 
-    0% { d: path("M 100 0 C 91 2 100 16 100 16 C 100 16 100 35 100 35 C 100 35 100 115 100 115");}
-    16% {d: path("M 100 0 C 100 7 86 7 100 16 C 100 16 100 35 100 35 C 100 35 100 115 100 115");}
-    32% {d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 100 35 100 35 C 100 35 100 115 100 115");}
-    48% {d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 91 26 100 35 C 100 35 100 115 100 115");}
-    64% {d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 91 26 100 35 C 114 65 100 115 100 115");}
-    80% {d: path("M 100 0 C 100 7 86 7 100 16 C 109 22 91 26 100 35 C 114 65 100 115 100 115");}
-    100% {d: path("M 100 0 C 100 0 100 16 100 16 C 100 16 100 35 100 35 C 100 35 100 115 100 115");}
-}
 .btn {
     @include containerSize(117px, 55px, true);
     line-height: 2.3rem;
@@ -69,20 +67,22 @@
     text-decoration: none;
     transition: background-color .5s, color .5s, border-color .5s;
 
-    &:hover {
+    &:hover, &:active, &:focus {
         border-color: $mainColor;
         background-color: $mainColor;
         color: $secondColor;
+        animation: shakeMe .5s 1;
     }
 }
 
 .container-facts {
     @include containerSize(100, 100);
+    @include backgroundImage('../img/map.svg', right 10% bottom 25%, no-repeat, 509px 617px);
     color: $mainColor;
     background-color: $secondColor;
     padding: 0 $gap-row;
-    @include backgroundImage('../img/map.svg', right 10% bottom 25%, no-repeat, 509px 617px);
     padding-bottom: calc($gap-column*4);
+    animation: scaleMyBg 1s infinite alternate;
 
     article {
         @include containerSize(70%, $hasHeight: false);
@@ -210,16 +210,14 @@
         @include containerSize(45%, 45%);
         @include position(absolute, -20%, $right: -12%, $zIndex: 1);
         font-size:clamp(calc(nth($fontsSizes, 5)/3), 2vw + calc( nth($fontsSizes, 5)/2), nth($fontsSizes, 5));
-    
+        
         letter-spacing: 1.2rem;
         font-family: 'workSans';
         animation: spinMe 2.5s infinite linear;
+        path {
+            d: path("m 150 300 C 150 150 300 150 300 150 C 450 150 450 300 450 300 C 450 450 300 450 300 450 C 150 450 150 300 150 300");
+        }
     }
-}
-
-@keyframes spinMe { 
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
 }
 
 .container-banner{
@@ -274,15 +272,6 @@
     }
 }
 
-@keyframes moveMe {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
 .footer {
     background-color: $secondColor;
     color: $mainColor;
@@ -314,6 +303,9 @@
 footer {
     overflow: hidden;
 }
+
+
+/* Media Quarry Start */
 
 @media only screen and (min-width:1400px) {
     .container-rosebear {
@@ -440,8 +432,14 @@ footer {
                 }
             }
         }
+        div {
+            @include containerDisplay(flex, center, center, column);
+        }
     }
     .container-goldenbear {
+        article {
+            padding-top: 0;
+        }
         .img-wrapper {
             img {
                 @include containerSize(calc(703px/3.3), calc(703px/3.3), true);
@@ -451,11 +449,38 @@ footer {
             }
         }
     }
+    .container-rosebear {
+        .circle-banner {
+            @include containerSize(100%, $hasHeight: false);
+            @include position(relative, 0, 0, 0, 0);
+            margin-top: $gap-column;
+            margin-bottom: -$gap-column;
+            font-family: "workSans";
+            animation: none;
+            path {
+            d: path("M 35 316 C 150 150 300 150 300 150 C 404 159 542 278 546 310 C 450 450 300 450 300 450 C 150 450 82 430 35 316");
+            }
+        }
+    }
     .container-img-hell {
+        p, h2 {
+            padding: 0 $gap-row;
+        }
         > div {
             flex-direction: column;
             align-items: center;
         
+        }
+        article {
+            img {
+                margin-bottom: $gap-column;
+            }
+            p {
+                padding-bottom: $gap-column;
+            }
+            &:nth-of-type(2) {
+                grid-template-columns: 1fr;
+            }
         }
     }
 }
